@@ -1,16 +1,24 @@
 import './App.css';
 import Main from './Main';
 import HeaderFooter from './HeaderFooter';
-
-function testClic() {
-  alert('ok');
-}
+import { useState } from 'react';
 
 function App() {
+
+  // Variable d'état
+  const [compteur, setCompteur] = useState(0);
+
+  let newCompteur = compteur + 1;
+
+  function testClic() {
+    setCompteur(newCompteur);
+  }
+
   return (
     <div className="App">
-      <HeaderFooter contenue=" du header" testClic={testClic}/>
-      <Main/>
+      Compteur : {compteur}
+      <HeaderFooter contenue=" du header"/>
+      <Main testClic={testClic}/>
       <HeaderFooter contenue=" du footer"/>
     </div>
   );
